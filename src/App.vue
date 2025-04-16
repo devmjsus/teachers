@@ -1,13 +1,9 @@
-<script setup lang="ts">
-  import { TeacherForm } from './components/TeacherForm.vue';
-</script>
-
 <template>
-<TeacherForm />
-
-<h1>Hello World</h1>
+    <TeacherForm />
 </template>
 
-<style scoped>
+<script lang="ts" setup>
+import TeacherForm from './components/TeacherForm.vue'
+</script>
 
-</style>
+<style scoped></style>
