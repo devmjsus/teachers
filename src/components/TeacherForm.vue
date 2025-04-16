@@ -6,6 +6,7 @@
 		<div><label for="">CC/TI:</label> <input type="text" v-model="teacher.cc" /></div>
 		<div><label for="">Subjects:</label> <input type="text" v-model="subject" /></div>
 		<input type="checkbox" v-model="teacher.doc" /> Documentation <button @click="handleSubject()">Add</button>
+		<button @click="handleDeleteSubject(0)">Delete</button>
 		<div>
 			<ul>
 				<li v-for="(sub, index) in teacher.subjects" :key="index">{{ sub }}</li>
@@ -13,7 +14,7 @@
 		</div>
 		<button @click="handleAddTeacher()">Add teacher</button>
 	</section>
-	
+
 	<section>
 		<h3>List of teachers</h3>
 		<table>
@@ -48,38 +49,40 @@ interface ITeacher {
 	surname: string;
 	cc: string;
 	subjects: Array<string>;
-		doc: boolean;
-	}
-	const teacher: Ref<ITeacher> = ref({
+	doc: boolean;
+}
+const teacher: Ref<ITeacher> = ref({
+	teacherName: '',
+	surname: '',
+	cc: '',
+	subjects: [],
+	doc: false,
+});
+
+const teachers: Ref<Array<ITeacher>> = ref([]);
+
+const subject: Ref<string> = ref('');
+
+const handleSubject = () => {
+	teacher.value.subjects.push(subject.value);
+	subject.value = ''; // Clear the input after adding
+}
+
+const handleDeleteSubject = (index: number) => {
+	teacher.value.subjects.splice(index, 1); // Remove the subject at the specified index
+}
+
+const handleAddTeacher = () => {
+	teachers.value.push(teacher.value);
+	teacher.value = {
 		teacherName: '',
 		surname: '',
 		cc: '',
 		subjects: [],
-		doc: false,
-	});
-	
-	const teachers: Ref<Array<ITeacher>> = ref([]);
-		
-		const subject: Ref<string> = ref('');
-			
-			const handleSubject = () => {
-				teacher.value.subjects.push(subject.value);
-				subject.value = ''; // Clear the input after adding
-			}
-			
-			const handleAddTeacher = () => {
-				teachers.value.push(teacher.value);
-				teacher.value = {
-					teacherName: '',
-					surname: '',
-					cc: '',
-					subjects: [],
-					doc: false
-				}; // Reset the form after adding
-			}
-			
+		doc: false
+	}; // Reset the form after adding
+}
+
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
