@@ -5,7 +5,7 @@
 		<div><label for="">surname:</label> <input type="text" v-model="teacher.surname" /></div>
 		<div><label for="">CC/TI:</label> <input type="text" v-model="teacher.cc" /></div>
 		<div><label for="">Subjects:</label> <input type="text" v-model="subject" /></div>
-		<input type="checkbox" v-model="teacher.doc" /> Documentation 
+		<input type="checkbox" v-model="teacher.doc" /> Documentation
 		<div class="subject-actions">
 			<button @click="handleSubject()">Add</button>
 			<button @click="handleDeleteSubject(0)">Delete</button>
@@ -90,37 +90,45 @@ const handleAddTeacher = () => {
 </script>
 
 <style scoped>
-	.teacher-form {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
-	table {
-		border-collapse: collapse;
-		width: 100%;
-	}
-	th,
-	td {
-		border: 1px solid #ddd;
-		padding: 8px;
-	}
-	th {
-		background-color: #f2f2f2;
-	}
-	button {
-		margin-top: 1rem;
-	}
-	.teacher-form input[type='text'] {
-		margin-left: 1rem;
-	}
-	.teacher-form input[type='checkbox'] {
-		margin-left: 1rem;
-	}
-	.subject-actions {
-		display: flex;
-		gap: 1rem;
-	}
-	.subject-actions button {
-		margin-top: 0;
-	}
+.teacher-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th,
+td {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+th {
+	background-color: #f2f2f2;
+}
+
+button {
+	margin-top: 1rem;
+}
+
+.teacher-form input[type='text'] {
+	margin-left: 1rem;
+}
+
+.teacher-form input[type='checkbox'] {
+	margin-left: 1rem;
+}
+
+.subject-actions {
+	display: flex;
+	gap: 1rem;
+}
+
+.subject-actions button {
+	margin-top: 0;
+}
 </style>
