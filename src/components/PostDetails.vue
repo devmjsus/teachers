@@ -7,41 +7,24 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
+<script lang="ts" setup>
+import { ref } from 'vue';
 import type { Ref } from 'vue';
-export default defineComponent({
-    name: 'PostDetail',
-    props: {
-        post: {
-            type: Object,
-            required: true
-        },
-        title: {
-            type: String,
-            required: true
-        },
-        content: {
-            type: String,
-            required: true
-        }
-    },
-    emits: ['sayHi'],
-    setup(props, { emit }) {
-        // Emit an event when the button is clicked
-        const handleClick = () => {
-            emit('sayHi', message.value);
-        };
-        const message: Ref<string> = ref('');
-        // You can also use a reactive variable if needed
-        return {
-            props,
-            handleClick,
-            message
-        };
-    }
-}
-)
+
+defineProps<{
+    post: { title: string; content: string };
+    title: string;
+    content: string;
+}>();
+const emit = defineEmits<{
+    (e: 'sayHi', msg: string): void;
+}>();
+
+const message: Ref<string> = ref('');
+
+const handleClick = () => {
+    emit('sayHi', message.value);
+};
 </script>
 
 <style scoped>
